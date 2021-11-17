@@ -2,6 +2,12 @@ import csv
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 import time
+from kneed import KneeLocator
+from sklearn.datasets import make_blobs
+from sklearn.cluster import KMeans
+from sklearn.metrics import silhouette_score
+from sklearn.preprocessing import StandardScaler
+
 
 #Recupe de la liste sans doublon
 #-------------------------------------------------------------
@@ -135,3 +141,4 @@ print("quality 9")
 print(len(quality9))
 print("quality 10")
 print(len(quality10))
+
