@@ -2,7 +2,6 @@ import csv
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 import time
-from kneed import KneeLocator
 from sklearn.datasets import make_blobs
 from sklearn.cluster import KMeans
 from sklearn.metrics import silhouette_score

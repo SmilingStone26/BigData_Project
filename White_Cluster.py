@@ -4,7 +4,6 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 from sklearn import cluster
-from kneed import KneeLocator
 from sklearn.datasets import make_blobs
 from sklearn.cluster import KMeans
 from sklearn.metrics import silhouette_score
@@ -73,6 +72,7 @@ for i in range(len(white_wine)):
         White_Cluster_5.append(white_wine[i])
 
 
+"""
 fig = plt.figure()
 ax = fig.add_subplot(111)
 ax.set_xlabel(liste_type[axe_X])
@@ -84,3 +84,12 @@ plt.scatter([e[axe_X-1] for e in White_Cluster_3],[e[axe_Y-1] for e in White_Clu
 plt.scatter([e[axe_X-1] for e in White_Cluster_4],[e[axe_Y-1] for e in White_Cluster_4], s=1, color = 'black')
 plt.scatter([e[axe_X-1] for e in White_Cluster_5],[e[axe_Y-1] for e in White_Cluster_5], s=1, color = 'purple')
 plt.show()
+"""
+
+plt.figure(1)
+plt.subplot(211)
+plt.scatter(quality,label_White)
+plt.subplot(212)
+plt.hist2d(quality,label_White,bins=6)
+plt.show()
+

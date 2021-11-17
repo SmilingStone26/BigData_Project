@@ -1,0 +1,21 @@
+print("fixed_acidity : " + str(np.amax(fixed_acidity)))
+print("volatile_acidity : " + str(np.amax(volatile_acidity)))
+print("citric_acid : " + str(np.amax(citric_acid)))
+print("residual_sugar : " + str(np.amax(residual_sugar)))
+print("chloride : " + str(np.amax(chloride)))
+print("free_sulfure_dioxyde : " + str(np.amax(free_sulfure_dioxyde)))
+print("total_sulfur_dioxyde : " + str(np.amax(total_sulfur_dioxyde)))
+print("density : " + str(np.amax(density)))
+print("pH : " + str(np.amax(pH)))
+print("sulphates : " + str(np.amax(sulphates)))
+print("alcohol : " + str(np.amax(alcohol)))
+print("quality : " + str(np.amax(quality)))
+
+chloride : 0.346
+free_sulfure_dioxyde : 289.0
+total_sulfur_dioxyde : 440.0
+density : 1.03898
+pH : 3.82
+sulphates : 1.08
+alcohol : 14.2
+quality : 9.0
