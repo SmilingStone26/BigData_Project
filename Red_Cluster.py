@@ -73,19 +73,6 @@ for i in range(len(red_Wine)):
     elif (label_Red[i] == 5):
         Red_Cluster_5.append(red_Wine[i])
 
-"""
-"""fig = plt.figure()
-ax = fig.add_subplot(111)
-ax.set_xlabel(liste_type[axe_X])
-ax.set_ylabel(liste_type[axe_Y])
-plt.scatter([e[axe_X-1] for e in Red_Cluster_0],[e[axe_Y-1] for e in Red_Cluster_0], s=1, color = 'green')
-plt.scatter([e[axe_X-1] for e in Red_Cluster_1],[e[axe_Y-1] for e in Red_Cluster_1], s=1, color = 'red')
-plt.scatter([e[axe_X-1] for e in Red_Cluster_2],[e[axe_Y-1] for e in Red_Cluster_2], s=1, color = 'blue')
-plt.scatter([e[axe_X-1] for e in Red_Cluster_3],[e[axe_Y-1] for e in Red_Cluster_3], s=1, color = 'yellow')
-plt.scatter([e[axe_X-1] for e in Red_Cluster_4],[e[axe_Y-1] for e in Red_Cluster_4], s=1, color = 'black')
-plt.scatter([e[axe_X-1] for e in Red_Cluster_5],[e[axe_Y-1] for e in Red_Cluster_5], s=1, color = 'purple')
-plt.show()"""
-"""
 plt.figure(1)
 plt.subplot(211)
 plt.scatter(quality,label_Red)
@@ -133,7 +120,7 @@ plt.hist2d(quality,label_Red, bins=6)
 plt.show()
 """
 #---------------------------------------- Clusterisation 3 ---------------------------------------------------
-red_Wine_3 = []
+"""red_Wine_3 = []
 
 for i in range(len(red_Wine)):
     red_Wine_3.append([fixed_acidity[i] / 15.9, volatile_acidity[i]/1.58, citric_acid[i], residual_sugar[i]/15.5, chloride[i], free_sulfure_dioxyde[i]/72, total_sulfur_dioxyde[i]/289, density[i], pH[i]/4, sulphates[i]/2, alcohol[i]/14.9])
@@ -168,4 +155,143 @@ plt.subplot(211)
 plt.scatter(quality,label_Red)
 plt.subplot(212)
 plt.hist2d(quality,label_Red, bins=3)
+plt.show()"""
+
+#-------------------------------------------------clusterisation 4 --------------------------------------------------
+
+"""red_Wine_4 = []
+
+for i in range(len(red_Wine)):
+    red_Wine_4.append([fixed_acidity[i] / 15.9, volatile_acidity[i]/1.58, citric_acid[i], residual_sugar[i]/15.5, density[i], alcohol[i]/14.9])
+
+k_means_Red = cluster.KMeans(n_clusters=5,random_state=0)
+k_means_Red.fit(red_Wine_4)
+label_Red = k_means_Red.labels_
+
+Red_Cluster_0 = []
+Red_Cluster_1 = []
+Red_Cluster_2 = []
+Red_Cluster_3 = []
+Red_Cluster_4 = []
+Red_Cluster_5 = []
+
+for i in range(len(red_Wine_4)):
+    if(label_Red[i] == 0):
+        Red_Cluster_0.append(red_Wine_4[i])
+    elif (label_Red[i] == 1):
+        Red_Cluster_1.append(red_Wine_4[i])
+    elif (label_Red[i] == 2):
+        Red_Cluster_2.append(red_Wine_4[i])
+    elif (label_Red[i] == 3):
+        Red_Cluster_3.append(red_Wine_4[i])
+    elif (label_Red[i] == 4):
+        Red_Cluster_4.append(red_Wine_4[i])
+    elif (label_Red[i] == 5):
+        Red_Cluster_5.append(red_Wine_4[i])
+
+plt.figure(1)
+plt.subplot(211)
+plt.scatter(quality,label_Red)
+plt.subplot(212)
+plt.hist2d(quality,label_Red, bins=3)
+plt.show()"""
+
+#--------------------- cluster 5 ----------------------------------
+#qualité 5 et 6 2 cluter en 0,1 et 3,4
+
+'''red_Wine_5 = []
+
+for i in range(len(red_Wine)):
+    red_Wine_5.append([pH[i]/4, alcohol[i]])
+
+k_means_Red = cluster.KMeans(n_clusters=5,random_state=0)
+k_means_Red.fit(red_Wine_5)
+label_Red = k_means_Red.labels_
+
+Red_Cluster_0 = []
+Red_Cluster_1 = []
+Red_Cluster_2 = []
+Red_Cluster_3 = []
+Red_Cluster_4 = []
+Red_Cluster_5 = []
+
+for i in range(len(red_Wine_5)):
+    if(label_Red[i] == 0):
+        Red_Cluster_0.append(red_Wine_5[i])
+    elif (label_Red[i] == 1):
+        Red_Cluster_1.append(red_Wine_5[i])
+    elif (label_Red[i] == 2):
+        Red_Cluster_2.append(red_Wine_5[i])
+    elif (label_Red[i] == 3):
+        Red_Cluster_3.append(red_Wine_5[i])
+    elif (label_Red[i] == 4):
+        Red_Cluster_4.append(red_Wine_5[i])
+    elif (label_Red[i] == 5):
+        Red_Cluster_5.append(red_Wine_5[i])
+
+plt.figure(1)
+plt.subplot(211)
+plt.scatter(quality,label_Red)
+plt.subplot(212)
+plt.hist2d(quality,label_Red, bins=3)
+plt.show()'''
+
+#---------------------- cluster 6 -----------------------------
+
+red_Wine_6 = []
+
+for i in range(len(red_Wine)):
+  # red_Wine_6.append([fixed_acidity[i] / 15.9, volatile_acidity[i]/1.58, citric_acid[i], residual_sugar[i]/15.5, chloride[i], free_sulfure_dioxyde[i]/72, total_sulfur_dioxyde[i]/289, density[i], pH[i]/4, sulphates[i]/2, alcohol[i]/14.9])
+  red_Wine_6.append(
+      [fixed_acidity[i] , volatile_acidity[i] , citric_acid[i], residual_sugar[i] , chloride[i],
+       free_sulfure_dioxyde[i] , total_sulfur_dioxyde[i] , density[i], pH[i] , sulphates[i] ,
+       alcohol[i] ])
+
+#ph et alcool ou alcool et acid citrique : cluster en 0 - 0.5
+#ph, alcool et acid citrique : cluster en 2.5-3
+
+  # red_Wine_6.append([fixed_acidity[i]])
+
+for k in range(2,11) :
+  k_means_Red = cluster.KMeans(n_clusters=k,random_state=0)
+  k_means_Red.fit(red_Wine_6)
+  label_Red = k_means_Red.labels_
+
+  silhouette_avg = silhouette_score(red_Wine_6, label_Red)
+  print(
+      "Pour k = ", k,
+    "The average silhouette_score is :",
+    silhouette_avg,
+  )
+
+k_means_Red = cluster.KMeans(n_clusters=2,random_state=0)
+k_means_Red.fit(red_Wine_6)
+label_Red = k_means_Red.labels_
+
+Red_Cluster_0 = []
+Red_Cluster_1 = []
+Red_Cluster_2 = []
+Red_Cluster_3 = []
+Red_Cluster_4 = []
+Red_Cluster_5 = []
+
+for i in range(len(red_Wine_6)):
+    if(label_Red[i] == 0):
+        Red_Cluster_0.append(red_Wine_6[i])
+    elif (label_Red[i] == 1):
+        Red_Cluster_1.append(red_Wine_6[i])
+    elif (label_Red[i] == 2):
+        Red_Cluster_2.append(red_Wine_6[i])
+    elif (label_Red[i] == 3):
+        Red_Cluster_3.append(red_Wine_6[i])
+    elif (label_Red[i] == 4):
+        Red_Cluster_4.append(red_Wine_6[i])
+    elif (label_Red[i] == 5):
+        Red_Cluster_5.append(red_Wine_6[i])
+
+plt.figure(1)
+plt.subplot(211)
+plt.scatter(quality,label_Red)
+plt.subplot(212)
+plt.hist2d(quality,label_Red, bins=[2,2])
 plt.show()
