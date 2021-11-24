@@ -138,7 +138,7 @@ red_Wine_3 = []
 for i in range(len(red_Wine)):
     red_Wine_3.append([fixed_acidity[i] / 15.9, volatile_acidity[i]/1.58, citric_acid[i], residual_sugar[i]/15.5, chloride[i], free_sulfure_dioxyde[i]/72, total_sulfur_dioxyde[i]/289, density[i], pH[i]/4, sulphates[i]/2, alcohol[i]/14.9])
 
-k_means_Red = cluster.KMeans(n_clusters=6,random_state=0)
+k_means_Red = cluster.KMeans(n_clusters=3,random_state=0)
 k_means_Red.fit(red_Wine_3)
 label_Red = k_means_Red.labels_
 
@@ -167,5 +167,5 @@ plt.figure(1)
 plt.subplot(211)
 plt.scatter(quality,label_Red)
 plt.subplot(212)
-plt.hist2d(quality,label_Red, bins=6)
+plt.hist2d(quality,label_Red, bins=3)
 plt.show()
