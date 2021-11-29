@@ -46,7 +46,7 @@ for i in range(1,len(readFile)):
     white_wine.append([fixed_acidity[i-1],volatile_acidity[i-1],citric_acid[i-1],residual_sugar[i-1],chloride[i-1],free_sulfure_dioxyde[i-1],total_sulfur_dioxyde[i-1],density[i-1],pH[i-1],sulphates[i-1],alcohol[i-1],quality[i-1]])
 csvFile.close()
 
-k_means_White = cluster.KMeans(n_clusters=6,random_state=0)
+"""k_means_White = cluster.KMeans(n_clusters=6,random_state=0)
 k_means_White.fit(white_wine)
 label_White = k_means_White.labels_
 
@@ -69,7 +69,7 @@ for i in range(len(white_wine)):
     elif (label_White[i] == 4):
         White_Cluster_4.append(white_wine[i])
     elif (label_White[i] == 5):
-        White_Cluster_5.append(white_wine[i])
+        White_Cluster_5.append(white_wine[i])"""
 
 
 """
@@ -86,10 +86,73 @@ plt.scatter([e[axe_X-1] for e in White_Cluster_5],[e[axe_Y-1] for e in White_Clu
 plt.show()
 """
 
-plt.figure(1)
+"""plt.figure(1)
 plt.subplot(211)
 plt.scatter(quality,label_White)
 plt.subplot(212)
 plt.hist2d(quality,label_White,bins=6)
-plt.show()
+plt.show()"""
 
+#---------------------- cluster white ----------------------------
+
+
+white_Wine_6 = []
+
+for i in range(len(white_wine)):
+  # red_Wine_6.append([fixed_acidity[i] / 15.9, volatile_acidity[i]/1.58, citric_acid[i], residual_sugar[i]/15.5, chloride[i], free_sulfure_dioxyde[i]/72, total_sulfur_dioxyde[i]/289, density[i], pH[i]/4, sulphates[i]/2, alcohol[i]/14.9])
+  """white_Wine_6.append(
+      [fixed_acidity[i] , volatile_acidity[i] , citric_acid[i], residual_sugar[i] , chloride[i],
+       free_sulfure_dioxyde[i] , total_sulfur_dioxyde[i] , density[i], pH[i] , sulphates[i] ,
+       alcohol[i] ])"""
+
+  white_Wine_6.append(
+      [fixed_acidity[i], residual_sugar[i], alcohol[i]])
+
+#ph et alcool ou alcool et acid citrique : cluster en 0 - 0.5
+#ph, alcool et acid citrique : cluster en 2.5-3
+
+  # red_Wine_6.append([fixed_acidity[i]])
+
+for k in range(2,11) :
+  k_means_white = cluster.KMeans(n_clusters=k,random_state=0)
+  k_means_white.fit(white_Wine_6)
+  label_white = k_means_white.labels_
+
+  silhouette_avg = silhouette_score(white_Wine_6, label_white)
+  print(
+      "Pour k = ", k,
+    "The average silhouette_score is :",
+    silhouette_avg,
+  )
+
+k_means_white = cluster.KMeans(n_clusters=2,random_state=0)
+k_means_white.fit(white_Wine_6)
+label_white = k_means_white.labels_
+
+white_Cluster_0 = []
+white_Cluster_1 = []
+white_Cluster_2 = []
+white_Cluster_3 = []
+white_Cluster_4 = []
+white_Cluster_5 = []
+
+for i in range(len(white_Wine_6)):
+    if(label_white[i] == 0):
+        white_Cluster_0.append(white_Wine_6[i])
+    elif (label_white[i] == 1):
+        white_Cluster_1.append(white_Wine_6[i])
+    elif (label_white[i] == 2):
+        white_Cluster_2.append(white_Wine_6[i])
+    elif (label_white[i] == 3):
+        white_Cluster_3.append(white_Wine_6[i])
+    elif (label_white[i] == 4):
+        white_Cluster_4.append(white_Wine_6[i])
+    elif (label_white[i] == 5):
+        white_Cluster_5.append(white_Wine_6[i])
+
+plt.figure(1)
+plt.subplot(211)
+plt.scatter(quality,label_white)
+plt.subplot(212)
+plt.hist2d(quality,label_white, bins=[2,2])
+plt.show()
